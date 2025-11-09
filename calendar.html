@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamer — Calendar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- FullCalendar CSS -->
+  <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css' rel='stylesheet' />
+  <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css' rel='stylesheet' />
+  <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css' rel='stylesheet' />
+  <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/list/main.css' rel='stylesheet' />
+</head>
+<body class="page-calendar">
+<div class="main">
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="nav-logo">✨ DREAMER</div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">🏠 Home</a>
+        <a class="nav-btn" href="goals.html">🎯 Goals</a>
+        <a class="nav-btn" href="notes.html">📝 Notes</a>
+        <a class="nav-btn" href="calendar.html">📅 Calendar</a>
+        <a class="nav-btn" href="settings.html">⚙️ Settings</a>
+        <button id="theme-toggle">🌙</button>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>📅 Calendar</h1>
+      <div class="calendar-actions">
+        <select id="calendar-view">
+          <option value="dayGridMonth">Month</option>
+          <option value="timeGridWeek">Week</option>
+          <option value="timeGridDay">Day</option>
+          <option value="listWeek">List</option>
+        </select>
+        <button id="add-event-btn">+ Add Event</button>
+      </div>
+    </header>
+    <div class="calendar-layout">
+      <div class="calendar-sidebar">
+        <div class="calendar-filters">
+          <h3>Show/Hide</h3>
+          <label><input type="checkbox" id="show-tasks" checked> Tasks</label>
+          <label><input type="checkbox" id="show-goals" checked> Goals</label>
+          <label><input type="checkbox" id="show-events" checked> Events</label>
+        </div>
+        <div class="upcoming-events">
+          <h3>Upcoming</h3>
+          <div id="upcoming-list"></div>
+        </div>
+      </div>
+      <div class="calendar-main">
+        <div id="calendar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Event Modal -->
+  <div id="event-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 id="modal-title">Add Event</h2>
+      <form id="event-form">
+        <div class="form-group">
+          <label for="event-title">Title</label>
+          <input type="text" id="event-title" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="event-start">Start</label>
+            <input type="datetime-local" id="event-start" required>
+          </div>
+          <div class="form-group">
+            <label for="event-end">End</label>
+            <input type="datetime-local" id="event-end" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="event-type">Type</label>
+          <select id="event-type">
+            <option value="event">Event</option>
+            <option value="task">Task</option>
+            <option value="goal">Goal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="event-description">Description</label>
+          <textarea id="event-description"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Save</button>
+          <button type="button" class="btn-secondary close-modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container" aria-live="polite"></div>
+  
+  <!-- FullCalendar JS -->
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/interaction/main.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/list/main.js'></script>
+  <script src="script.js"></script>
+</div>
+</body>
+</html>

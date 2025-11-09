@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamer — Tasks & Goals</title>
+  <meta name="description" content="Smart task and goal manager with AI suggestions and productivity analytics" />
+  <meta name="theme-color" content="#4CAF50" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="/icon-192x192.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-home">
+<div class="main">
+  <nav class="top-nav">
+    <div class="nav-content">
+      <button id="hamburger" class="nav-hamburger" aria-label="Open menu">☰</button>
+      <div class="nav-logo">✨ DREAMER</div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">🏠 Home</a>
+        <a class="nav-btn" href="goals.html">🎯 Goals</a>
+        <a class="nav-btn" href="notes.html">📝 Notes</a>
+        <a class="nav-btn" href="calendar.html">📅 Calendar</a>
+        <a class="nav-btn" href="settings.html">⚙️ Settings</a>
+        <button id="theme-toggle">🌙</button>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Slide-out Sidebar (mobile) -->
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">✨ DREAMER</div>
+      <button id="close-sidebar" class="nav-hamburger" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-btn" href="index.html">🏠 Home</a>
+      <a class="nav-btn" href="goals.html">🎯 Goals</a>
+      <a class="nav-btn" href="notes.html">📝 Notes</a>
+      <a class="nav-btn" href="calendar.html">📅 Calendar</a>
+      <a class="nav-btn" href="settings.html">⚙️ Settings</a>
+    </nav>
+  </aside>
+      <div class="content-sections">
+        <!-- Dashboard Overview -->
+        <div class="section" id="dashboard-section">
+          <div class="container">
+            <header><h1>Today's Overview</h1></header>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:12px;">
+              <div class="card" style="padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));">
+                <h3>✅ Tasks Completed</h3>
+                <div id="tasks-completed" style="font-weight:700;font-size:1.2rem">0 / 0</div>
+              </div>
+
+              <div class="card" style="padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));">
+                <h3>🎯 Goals Progress</h3>
+                <div id="goals-progress" style="font-weight:700;font-size:1.2rem">0%</div>
+              </div>
+
+              <div class="card" style="padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));">
+                <h3>📅 Next Deadline</h3>
+                <div id="next-deadline" style="font-weight:700;font-size:1rem">—</div>
+              </div>
+
+              <div class="card" style="padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));">
+                <h3>🔥 Daily Motivation</h3>
+                <div id="daily-quote" style="font-style:italic">"Stay focused."</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;margin-top:18px;flex-wrap:wrap;align-items:flex-start">
+              <div style="flex:1;min-width:260px;padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));;">
+                <h3>🕒 Pomodoro</h3>
+                <div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+                  <div id="pomodoro-timer" style="font-weight:700;font-size:1.6rem;min-width:110px">25:00</div>
+                  <div>
+                    <button id="pom-start" class="nav-btn">Start</button>
+                    <button id="pom-stop" class="nav-btn">Stop</button>
+                    <button id="pom-reset" class="nav-btn">Reset</button>
+                  </div>
+                </div>
+                <small style="display:block;margin-top:8px;opacity:0.85">25 min work / 5 min break</small>
+              </div>
+
+              <div style="width:380px;min-width:260px;padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));;">
+                <h3>📊 Productivity Chart</h3>
+                <div style="height:140px;">
+                  <canvas id="productivity-chart" style="width:100%;height:100%;display:block;"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;">
+              <h2 style="margin:0 0 8px 0">Quick Summary</h2>
+              <ul id="quick-summary" style="margin:0;padding-left:18px;">
+                <li id="summary-tasks">Tasks Completed: 0/0</li>
+                <li id="summary-goals">Goals Progress: 0%</li>
+                <li id="summary-deadline">Next Deadline: —</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Home Section (Tasks) -->
+        <div class="section" id="home-section">
+          <div class="container">
+            <header>
+              <h1>📝 Tasks</h1>
+            </header>
+            <div class="task-input">
+              <input type="text" id="task-title" placeholder="Add a new task..." />
+              <input type="date" id="task-date" />
+              <input type="text" id="task-tags" placeholder="Tags (comma separated)" />
+              <input type="text" id="task-subtasks" placeholder="Subtasks (comma separated)" />
+              <select id="task-recurring">
+                <option value="none">No repeat</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+              </select>
+              <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+              <button id="add-task">Add</button>
+            </div>
+            <div class="task-controls">
+              <div class="task-search">
+                <input type="search" id="task-search" placeholder="Search tasks, tags or dates..." />
+              </div>
+              <div class="filter-controls">
+                <button class="filter-btn" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="high">High Priority</button>
+              </div>
+              <div class="sort-controls">
+                <label for="task-sort">Sort</label>
+                <select id="task-sort">
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="date-asc">Due date ↑</option>
+                  <option value="date-desc">Due date ↓</option>
+                  <option value="priority">Priority</option>
+                </select>
+              </div>
+            </div>
+            <ul id="task-list"></ul>
+            <div id="notification-area"></div>
+            <div class="chart-section">
+              <canvas id="progress-chart" width="240" height="240"></canvas>
+            </div>
+            <div class="progress-wrapper">
+              <div id="progress-bar"><div id="progress-fill"></div></div>
+            </div>
+            <div id="toast-container" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Assistant Panel -->
+      <div class="ai-panel" id="ai-assistant-panel">
+        <div class="panel-header">
+          <h3>🤖 AI Assistant</h3>
+          <button id="toggle-ai-panel" class="nav-btn">Toggle</button>
+        </div>
+        <div class="panel-content">
+          <div class="ai-suggestions">
+            <h4>Suggested Tasks</h4>
+            <div id="task-suggestions"></div>
+          </div>
+          <div class="voice-input">
+            <button id="mic-btn" class="nav-btn">🎙️ Speak</button>
+          </div>
+          <div class="chatbot-interface">
+            <div id="chat-messages"></div>
+            <div class="chat-input">
+              <input type="text" id="chat-input" placeholder="Ask me anything...">
+              <button id="send-chat" class="nav-btn">💬</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Dashboard -->
+      <div class="analytics-dashboard" id="analytics-panel">
+        <div class="panel-header">
+          <h3>📊 Analytics</h3>
+          <button id="toggle-analytics" class="nav-btn">Toggle</button>
+        </div>
+        <div class="panel-content">
+          <div class="charts-grid">
+            <canvas id="weekly-chart"></canvas>
+            <canvas id="category-chart"></canvas>
+          </div>
+          <div id="productivity-insights"></div>
+        </div>
+      </div>
+
+      <!-- PWA Install Prompt -->
+      <div id="pwa-install-prompt" class="hidden">
+        <div class="prompt-content">
+          <h4>📱 Install App</h4>
+          <p>Install Dreamer for easier access!</p>
+          <div class="prompt-buttons">
+            <button id="install-pwa" class="nav-btn">Install</button>
+            <button id="dismiss-pwa" class="nav-btn">Later</button>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+      <script src="ai-features.js"></script>
+      <script src="dashboard.js"></script>
+      <script src="script.js"></script>
+    </div>
+</body>
+</html>

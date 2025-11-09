@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login to Dreamer - Your productivity companion" />
+  <title>Dreamer — Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+<body class="page-login">
+  <div class="main">
+    <nav class="top-nav">
+      <div class="nav-content">
+        <div class="nav-logo">✨ DREAMER</div>
+        <div class="nav-buttons">
+          <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <h1>Login</h1>
+        </div>
+
+        <form id="login-form" class="login-form">
+          <div class="form-group">
+            <label for="login-email">Username</label>
+            <div class="input-group">
+              <i class="fas fa-user input-icon"></i>
+              <input 
+                type="email" 
+                id="login-email" 
+                required 
+                placeholder="Type your username" 
+                autocomplete="email"
+                aria-label="Username"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-group password-group">
+              <i class="fas fa-lock input-icon"></i>
+              <input 
+                type="password" 
+                id="login-password" 
+                required 
+                placeholder="Type your password" 
+                autocomplete="current-password"
+                aria-label="Password"
+              />
+              <button type="button" class="toggle-password" id="toggle-password" aria-label="Show password">
+                <i class="fas fa-eye eye-icon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <a href="#" class="forgot-password" id="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" id="login-submit" class="login-submit-btn">
+            <span class="btn-text">LOGIN</span>
+            <span class="btn-loader" id="btn-loader"></span>
+          </button>
+        </form>
+
+        <div class="login-divider">
+          <span>Or Sign Up Using</span>
+        </div>
+
+        <div class="social-login">
+          <button type="button" class="social-btn facebook" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button type="button" class="social-btn twitter" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button type="button" class="social-btn instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </button>
+          <button type="button" class="social-btn google" title="Google">
+            <i class="fab fa-google"></i>
+          </button>
+        </div>
+
+        <div class="signup-section">
+          <p>Or Sign Up Using</p>
+          <a href="#" class="signup-link">SIGN UP</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-container" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </div>
+</body>
+</html>

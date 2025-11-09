@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="AI Assistant for Dreamer productivity app" />
+  <title>AI Assistant — Dreamer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+
+    <div class="chat-container">
+      <div id="chat-area" class="chat-area">
+        <div id="messages" class="messages"></div>
+      </div>
+
+      <div class="chat-input-container">
+        <div class="chat-input-wrapper">
+          <input 
+            id="chat-input" 
+            type="text" 
+            placeholder="Ask me anything..." 
+            autocomplete="off"
+            aria-label="Chat input"
+          />
+          <button id="send-btn" type="button" aria-label="Send message">Send</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="toast-container" aria-live="polite"></div>
+
+    <script src="chat.js"></script>
+</body>
+</html>

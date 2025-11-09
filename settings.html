@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamer — Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-settings">
+<div class="main">
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="nav-logo">✨ DREAMER</div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">🏠 Home</a>
+        <a class="nav-btn" href="goals.html">🎯 Goals</a>
+        <a class="nav-btn" href="notes.html">📝 Notes</a>
+        <a class="nav-btn" href="calendar.html">📅 Calendar</a>
+        <a class="nav-btn" href="settings.html">⚙️ Settings</a>
+        <button id="theme-toggle">🌙</button>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>⚙️ Settings</h1>
+    </header>
+    <div class="settings-sections">
+      <!-- Profile Section -->
+      <div class="settings-section">
+        <h2>👤 Profile</h2>
+        <div class="profile-settings">
+          <div class="avatar-upload">
+            <img id="profile-avatar" src="default-avatar.png" alt="Profile Picture">
+            <div class="avatar-actions">
+              <label for="avatar-input" class="btn-secondary">Choose Image</label>
+              <input type="file" id="avatar-input" accept="image/*" style="display: none">
+              <button id="remove-avatar" class="btn-secondary">Remove</button>
+            </div>
+          </div>
+          <div class="profile-fields">
+            <div class="setting-item">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="Enter your name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appearance Section -->
+      <div class="settings-section">
+        <h2>🎨 Appearance</h2>
+        <div class="setting-item">
+          <label for="theme-mode">Theme Mode</label>
+          <select id="theme-mode">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Auto (System)</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label for="theme-color">Theme Color</label>
+          <select id="theme-color">
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="orange">Orange</option>
+            <option value="pink">Pink</option>
+          </select>
+        </div>
+        <div class="theme-preview">
+          <div class="preview-title">Preview</div>
+          <div class="preview-content">
+            <button class="btn-primary">Primary Button</button>
+            <div class="preview-card">Card Example</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="settings-section">
+        <h2>🔔 Notifications</h2>
+        <div class="setting-item">
+          <label for="enable-notifications">Enable Notifications</label>
+          <input type="checkbox" id="enable-notifications">
+        </div>
+        <div class="setting-item">
+          <label for="enable-sound">Sound Effects</label>
+          <input type="checkbox" id="enable-sound">
+        </div>
+      </div>
+
+      <!-- Pomodoro Section -->
+      <div class="settings-section">
+        <h2>⏱️ Pomodoro</h2>
+        <div class="setting-item">
+          <label for="pomodoro-work">Work Duration (minutes)</label>
+          <input type="number" id="pomodoro-work" min="1" max="60" value="25">
+        </div>
+        <div class="setting-item">
+          <label for="pomodoro-break">Break Duration (minutes)</label>
+          <input type="number" id="pomodoro-break" min="1" max="30" value="5">
+        </div>
+        <div class="setting-item">
+          <label for="pomodoro-long-break">Long Break Duration (minutes)</label>
+          <input type="number" id="pomodoro-long-break" min="5" max="60" value="15">
+        </div>
+      </div>
+
+      <!-- Language Section -->
+      <div class="settings-section">
+        <h2>🌐 Language</h2>
+        <div class="setting-item">
+          <label for="language">Interface Language</label>
+          <select id="language">
+            <option value="en">English</option>
+            <option value="hi">हिंदी (Hindi)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Data Management Section -->
+      <div class="settings-section">
+        <h2>💾 Data Management</h2>
+        <div class="data-actions">
+          <button id="export-data" class="btn-secondary">Export All Data</button>
+          <button id="import-data" class="btn-secondary">Import Data</button>
+          <input type="file" id="import-input" accept=".json" style="display: none">
+          <button id="clear-data" class="btn-danger">Clear All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+  </div>
+</body>
+</html>

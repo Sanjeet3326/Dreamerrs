@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goals — Productivity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-goals">
+<div class="main">
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="nav-logo">🎯 Goals</div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">🏠 Home</a>
+        <a class="nav-btn" href="goals.html">🎯 Goals</a>
+        <a class="nav-btn" href="notes.html">📝 Notes</a>
+        <a class="nav-btn" href="calendar.html">📅 Calendar</a>
+        <a class="nav-btn" href="settings.html">⚙️ Settings</a>
+        <button id="theme-toggle">🌙</button>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>🎯 Goals</h1>
+      <div class="goal-stats">
+        <div id="achievements" class="achievements">🏆 <span id="badge-text">No badges yet</span></div>
+        <div id="streak" class="streak">🔥 Streak: <span id="streak-count">0</span> weeks</div>
+      </div>
+    </header>
+
+    <div class="goals-container">
+      <div class="goal-input">
+        <input type="text" id="goal-title" placeholder="Goal title" />
+        <select id="goal-category">
+          <option value="short">Short Term</option>
+          <option value="long">Long Term</option>
+        </select>
+        <input type="date" id="goal-start" title="Start date" />
+        <input type="date" id="goal-end" title="End date" />
+        <input type="text" id="goal-milestones" placeholder="Milestones (comma separated)" />
+        <input type="text" id="goal-image" placeholder="Motivation image URL (optional)" />
+        <input type="text" id="goal-quote" placeholder="Motivation quote (optional)" />
+        <textarea id="goal-desc" rows="2" placeholder="Short description (optional)"></textarea>
+        <div class="progress-input">
+          <label for="goal-progress">Progress</label>
+          <input type="range" id="goal-progress" min="0" max="100" value="0" />
+          <span id="goal-progress-value">0%</span>
+        </div>
+        <button id="add-goal">Add Goal</button>
+      </div>
+
+      <div class="goals-list">
+        <div class="goal-category">
+          <h2>📈 Long Term Goals</h2>
+          <ul id="long-term-goals"></ul>
+        </div>
+        <div class="goal-category">
+          <h2>🎯 Short Term Goals</h2>
+          <ul id="short-term-goals"></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+  </div>
+</body>
+</html>

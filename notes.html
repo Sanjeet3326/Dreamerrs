@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes — Productivity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Marked for Markdown support -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-notes">
+<div class="main">
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="nav-logo">📝 Notes</div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">🏠 Home</a>
+        <a class="nav-btn" href="goals.html">🎯 Goals</a>
+        <a class="nav-btn" href="notes.html">📝 Notes</a>
+        <a class="nav-btn" href="calendar.html">📅 Calendar</a>
+        <a class="nav-btn" href="settings.html">⚙️ Settings</a>
+        <button id="theme-toggle">🌙</button>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>📝 Notes</h1>
+      <div class="notes-controls">
+        <div class="search-bar">
+          <input type="text" id="notes-search" placeholder="Search notes..." />
+        </div>
+        <div class="category-filter">
+          <button class="category-btn active" data-category="all">All</button>
+          <button class="category-btn" data-category="personal">Personal</button>
+          <button class="category-btn" data-category="work">Work</button>
+          <button class="category-btn" data-category="study">Study</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="notes-container">
+      <div class="note-input">
+        <div class="note-form-row">
+          <input type="text" id="note-title" placeholder="Note title..." />
+          <select id="note-category">
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="study">Study</option>
+          </select>
+        </div>
+        <textarea id="note-content" placeholder="Write your note here... (Supports Markdown)"></textarea>
+        <div class="note-form-footer">
+          <div class="note-form-tip">
+            <small>💡 Tip: Use Markdown for formatting! <code>**bold**</code>, <code>*italic*</code>, <code># heading</code></small>
+          </div>
+          <button id="add-note">Save Note</button>
+        </div>
+      </div>
+
+      <div class="notes-grid" id="notes-list"></div>
+    </div>
+  </div>
+  <div id="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+  </div>
+</body>
+</html>
